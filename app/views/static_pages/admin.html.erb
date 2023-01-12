@@ -1,0 +1,43 @@
+<div class="center jumbotron">
+  <h1>Welcome to the Admin page</h1>
+
+  <h2>
+    This is the admin page for the Bookstore
+  </h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <br>
+  <li>
+    <%= link_to "Users", users_path %>
+  </li>
+  <li>
+    <%= link_to "Messages", messages_path %>
+  </li>
+  <li>
+    <%= link_to "Books", books_path %>
+  </li>
+  <li>
+    <%= link_to "Gift Cards", gift_cards_path %>
+  </li>
+  <li>
+    <%= link_to "Movies", movies_path %>
+  </li>
+  <li>
+    <%= link_to "Music", musics_path %>
+  </li>
+  <li>
+    <%= link_to "School Accessories", school_accessories_path %>
+  </li>
+  <li>
+    <%= link_to "Writing Accessories", writing_accessories_path %>
+  </li>
+  <li>
+    <%= link_to "Toys", toys_path %>
+  </li>
+  <li>
+    <%= link_to "Congratulations Cards", congratulations_cards_path %>
+  </li>
+</div>
+
+<%= link_to image_tag("rails.svg", alt: "Rails logo", width: "200"),
+                      "https://rubyonrails.org/" %>

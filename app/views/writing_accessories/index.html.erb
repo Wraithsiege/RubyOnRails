@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Writing accessories</h1>
+
+<div id="writing_accessories">
+  <% @writing_accessories.each do |writing_accessory| %>
+    <%= render writing_accessory %>
+    <p>
+      <%= link_to "Show this writing accessory", writing_accessory %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New writing accessory", new_writing_accessory_path %>

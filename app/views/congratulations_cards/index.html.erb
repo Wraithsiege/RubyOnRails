@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Congratulations cards</h1>
+
+<div id="congratulations_cards">
+  <% @congratulations_cards.each do |congratulations_card| %>
+    <%= render congratulations_card %>
+    <p>
+      <%= link_to "Show this congratulations card", congratulations_card %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New congratulations card", new_congratulations_card_path %>

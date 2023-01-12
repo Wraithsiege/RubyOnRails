@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @writing_accessory %>
+
+<div>
+  <%= link_to "Edit this writing accessory", edit_writing_accessory_path(@writing_accessory) %> |
+  <%= link_to "Back to writing accessories", writing_accessories_path %>
+
+  <%= button_to "Destroy this writing accessory", @writing_accessory, method: :delete %>
+</div>
