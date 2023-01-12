@@ -1,5 +1,6 @@
 class WritingAccessoriesController < ApplicationController
-  before_action :set_writing_accessory, only: %i[ show edit update destroy ]
+  before_action :set_writing_accessory, only: %i[ show ]
+  before_action :admin_user,     only: %i[ edit update destroy ]
 
   # GET /writing_accessories or /writing_accessories.json
   def index
@@ -66,5 +67,9 @@ class WritingAccessoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def writing_accessory_params
       params.require(:writing_accessory).permit(:manufacturer, :type, :color, :price)
+    end
+
+    def admin_user
+      redirect_to(root_url, status: :see_other) unless current_user.admin?
     end
 end

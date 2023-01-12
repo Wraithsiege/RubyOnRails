@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: %i[ show edit update destroy ]
+  before_action :admin_user,     only: %i[ edit update destroy ]
 
   # GET /messages or /messages.json
   def index
@@ -66,5 +67,9 @@ class MessagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def message_params
       params.require(:message).permit(:content, :user_id)
+    end
+
+    def admin_user
+      redirect_to(root_url, status: :see_other) unless current_user.admin?
     end
 end

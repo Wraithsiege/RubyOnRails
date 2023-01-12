@@ -1,5 +1,6 @@
 class SchoolAccessoriesController < ApplicationController
-  before_action :set_school_accessory, only: %i[ show edit update destroy ]
+  before_action :set_school_accessory, only: %i[ edit update destroy ]
+  before_action :admin_user,     only: %i[ edit update destroy ]
 
   # GET /school_accessories or /school_accessories.json
   def index
@@ -66,5 +67,9 @@ class SchoolAccessoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def school_accessory_params
       params.require(:school_accessory).permit(:manufacturer, :type, :color, :price)
+    end
+
+    def admin_user
+      redirect_to(root_url, status: :see_other) unless current_user.admin?
     end
 end

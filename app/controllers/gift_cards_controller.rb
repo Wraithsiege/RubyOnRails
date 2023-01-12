@@ -1,5 +1,6 @@
 class GiftCardsController < ApplicationController
-  before_action :set_gift_card, only: %i[ show edit update destroy ]
+  before_action :set_gift_card, only: %i[ show ]
+  before_action :admin_user,     only: %i[ edit update destroy ]
 
   # GET /gift_cards or /gift_cards.json
   def index
@@ -66,5 +67,9 @@ class GiftCardsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def gift_card_params
       params.require(:gift_card).permit(:value)
+    end
+
+    def admin_user
+      redirect_to(root_url, status: :see_other) unless current_user.admin?
     end
 end

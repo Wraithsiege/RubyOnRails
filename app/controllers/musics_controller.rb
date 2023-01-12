@@ -1,5 +1,6 @@
 class MusicsController < ApplicationController
-  before_action :set_music, only: %i[ show edit update destroy ]
+  before_action :set_music, only: %i[ show ]
+  before_action :admin_user,     only: %i[ edit update destroy ]
 
   # GET /musics or /musics.json
   def index
@@ -66,5 +67,9 @@ class MusicsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def music_params
       params.require(:music).permit(:albumName, :performer, :genre, :price)
+    end
+
+    def admin_user
+      redirect_to(root_url, status: :see_other) unless current_user.admin?
     end
 end
